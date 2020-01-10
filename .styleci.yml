@@ -1,0 +1,13 @@
+php:
+  preset: laravel
+  disabled:
+    - unused_use
+  finder:
+    not-name:
+      - index.php
+      - server.php
+    exclude:
+      - modules
+      - node_modules
+      - storage
+      - vendor
