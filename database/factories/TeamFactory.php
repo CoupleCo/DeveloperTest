@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Team::class, function (Faker $faker) {
     return [
-    	'user_id' => function() {
+    	'owner_id' => function() {
     		return factory('App\User')->create()->id;
     	},
         'name' => $faker->text(30),

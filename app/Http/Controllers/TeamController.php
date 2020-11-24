@@ -14,7 +14,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = auth()->user()->team;
+
+        return response()->json(compact('teams'));
     }
 
     /**
@@ -35,7 +37,15 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'owner_id' => 'unique:teams'
+        ]);
+
+        auth()->user()->team()->create($attributes);
+
+        return response()->json(compact('team'));
     }
 
     /**
@@ -46,7 +56,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        return response()->json(compact('team'));
     }
 
     /**

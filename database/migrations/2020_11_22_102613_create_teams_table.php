@@ -15,10 +15,15 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->unsignedInteger('owner_id');
             $table->string('name');
             $table->text('description');
             $table->timestamps();
+
+            $table->foreign('owner_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
