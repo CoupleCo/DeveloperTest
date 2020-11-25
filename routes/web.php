@@ -14,3 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'app'], function () {
+    Route::get('/{any?}', function () {
+	    return view('app');
+	});
+});
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('teams', 'TeamController@index')->middleware('auth');
+	Route::get('teams/{team}', 'TeamController@show')->middleware('auth')->name('team.view');
+	Route::post('/teams', 'TeamController@store')->middleware('auth');
+
+	Route::get('/home', 'HomeController@index')->name('home');
+});
+
+

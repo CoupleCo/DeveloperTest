@@ -4,61 +4,56 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
 
 class LoginTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
-    /** @test */
-    public function can_view_login_page()
+    protected function setUp() : void
     {
-        $response = $this->get('/login');
-
-        $response->assertStatus(200);
+        parent::setUp();
+        \Artisan::call('passport:install',['-vvv' => true]);
     }
 
     /** @test */
-    public function user_with_valid_credentials_can_login()
+    public function guest_with_valid_credentials_can_login()
     {
+        $this->withoutExceptionHandling();
+
         $user = factory(User::class)->create();
 
-        $response = $this->post('/login', [
+        $response = $this->postJson('/api/login', [
             'email' => $user->email,
             'password' => 'password'
         ]);
 
-        $response->assertStatus(302);
-
-        $this->assertAuthenticatedAs($user);
+        $response->assertStatus(200)->assertJsonStructure(['token']);
     }
 
     /** @test */
-    public function user_with_invalid_credentials_cannot_login()
+    public function guest_with_invalid_credentials_cannot_login()
     {
         $user = factory(User::class)->create();
 
-        $response = $this->post('/login', [
+        $response = $this->postJson('/api/login', [
             'email' => $user->email,
             'password' => 'invalid'
         ]);
 
-        $response->assertSessionHasErrors();
-
-        $this->assertGuest();
+        $response->assertStatus(422);
     }
 
     /** @test */
     public function user_logged_in_can_logout()
     {
-        $user = factory(User::class)->create();
+        $this->withoutExceptionHandling();
 
-        $response = $this->actingAs($user)->post('/logout');
+        $user = Passport::actingAs(factory(User::class)->create());
 
-        $response->assertStatus(302);
+        $response = $this->postJson('/api/logout');
 
-        $this->assertGuest();
+        $response->assertStatus(200);
     }
 }

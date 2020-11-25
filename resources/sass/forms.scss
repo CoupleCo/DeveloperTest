@@ -1,0 +1,70 @@
+ .input {
+
+	@apply   rounded text-base p-4 mb-4 tracking-wide border-2 border-grey;
+
+}
+
+.input-contain {
+	@apply bg-purple-darker p-8;
+}
+
+.input-contain-shadow {
+	@apply rounded shadow-lg; 
+}
+
+.input-button {
+
+	@apply font-extrabold bg-pink text-white border-2 border-pink;
+
+}
+
+.input-header {
+	
+	text-align: center;
+	margin-left: 25px;
+}
+
+.group {
+
+ @apply overflow-hidden relative;
+
+}
+
+
+.label {
+  
+	@apply absolute ;
+  left: 20px;
+  top: 25px;
+  transition: 25s ease-in;
+
+}
+
+.input {
+@apply bg-transparent;
+  padding-top: 17px;
+  display: block;
+  border: none;
+  border-radius: 0;
+  transition: 3s ease-in;
+    width: 100%;
+}
+
+.input:valid ~ label {
+  top: 10px;
+  color: #C6C7C9;
+}
+
+.input:valid ~ error {
+  @apply text-pink;
+}
+
+.input:focus {
+  outline: none;
+  color: #C6C7C9;
+}
+
+.input:focus ~ label {
+  top: 10px;
+   color: #C6C7C9;
+} 

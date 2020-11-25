@@ -1,0 +1,66 @@
+body {
+  @apply bg-grey-light font-serif;
+  @apply tracking-wide;
+}
+h1  {
+  @apply text-purple-darker text-lg font-extrabold tracking-normal;
+}
+
+@screen sm {
+	h1 {
+	   @apply text-xl;
+	}
+}
+
+h2 {
+  @apply text-purple-darker text-lg font-bold tracking-normal;
+}
+h3 {
+  @apply text-purple-darker text-base font-extrabold p-1 tracking-wide;
+}
+
+h4 {
+  @apply text-grey text-sm font-bold p-1 uppercase tracking-widest;
+}
+
+@screen sm {
+	h4 {
+	   @apply text-base;
+	}
+}
+
+p {
+  @apply text-black text-base font-normal leading-normal tracking-wide;
+  @apply mt-2 mb-2 p-1;
+}
+
+a {
+	@apply text-purple-darker text-base font-bold leading-normal no-underline tracking-wide;
+}
+
+strong {
+	@apply font-extrabold text-purple-darker;
+}
+
+pre {
+	@apply bg-purple-darker p-2 rounded text-white border-2 border-grey whitespace-normal;
+	@apply my-2 text-center;
+}
+
+@screen sm {
+	pre {
+
+		@apply text-left p-4;
+	
+	}
+}
+
+blockquote {
+	@apply bg-white rounded mx-auto text-center;
+	@apply mt-4 mb-4;
+	@apply p-8;
+}
+
+hr	{
+	@apply bg-grey-light h-1 rounded mb-8 mt-8;
+}
