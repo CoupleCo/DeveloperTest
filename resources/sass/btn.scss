@@ -1,0 +1,155 @@
+.btn {
+	@apply  font-extrabold rounded text-base p-4 tracking-wide shadow-md border border-solid;
+	padding-left: 50px;
+	padding-right: 50px;
+
+}
+
+.btn:disabled {
+	cursor: not-allowed;
+}
+
+.btn-pink {
+
+	@apply bg-pink text-white border-pink;
+
+}
+
+.btn-pink:not([disabled]):hover {
+
+	@apply bg-pink-light text-white;
+
+}
+
+
+.btn-purple {
+
+	@apply bg-purple-darker text-white border-purple-darker;
+
+}
+
+.btn-purple:not([disabled]):hover {
+
+	@apply bg-purple-dark text-white;
+
+}
+
+.btn-green {
+
+	@apply bg-green text-white border-green;
+
+}
+
+.btn-green:not([disabled]):hover {
+
+	@apply bg-grey text-white;
+
+}
+
+.btn-purple-inverse {
+
+	@apply bg-purple-darker text-white border border-white;
+
+}
+
+.btn-purple-inverse:not([disabled]):hover {
+
+	@apply bg-purple-dark text-white;
+
+}
+
+.btn-grey-inverse {
+
+	@apply bg-grey-light text-purple-darker border border-grey;
+
+}
+
+.btn-grey-inverse:not([disabled]):hover {
+
+	@apply bg-grey text-purple-darker border border-grey;
+
+}
+
+
+
+.dropdown-purple {
+    
+    @apply inline-block;
+}
+
+.dropdown-content-purple {
+
+	@apply hidden overflow-auto z-10 border;
+}
+
+.dropdown-content-purple a {
+
+	@apply text-left text-grey-light p-4 no-underline block;
+    border-bottom: 05px solid #f8fafc;
+}
+
+.dropdown-purple a:hover {
+
+	@apply bg-grey-light text-purple-darker;
+}
+
+
+.dropdown {
+    
+    @apply inline-block;
+}
+
+.dropdown-content {
+
+	@apply hidden overflow-auto z-10;
+}
+
+.dropdown-content a {
+
+	@apply text-left bg-grey-light text-grey p-4 no-underline block;
+    border-bottom: 05px solid #C6C7C9;
+}
+
+.dropdown a:hover {
+
+	@apply bg-grey text-grey-light;
+}
+
+.show {
+
+	@apply block;
+}
+
+.arrow {
+	margin-left: 10px;
+	margin-bottom: 2px;
+    border: solid #f8fafc;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+}
+
+.arrow-down {
+	 transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.arrow-up {
+  position: absolute;
+  margin-top: -18px;
+  margin-left:70px;
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid #f8fafc;
+
+}
+
+#bgCTA {
+    background: linear-gradient(to bottom, #f8fafc 0%,#f8fafc 30%,#040123 30%,#040123 100%);
+}
+
+#bgCTAreverse {
+    background: linear-gradient(to bottom,#040123  0%,#040123 30%,#f8fafc 30%,#f8fafc 100%);
+}

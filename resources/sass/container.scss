@@ -1,0 +1,26 @@
+/* THe mobile first view */
+.contain {
+	@apply p-4 text-center block;
+	@apply mx-auto overflow-hidden;
+
+}
+
+/* Above the mobile view */
+@screen sm {
+	.contain {
+		@apply block text-left p-8;
+	}
+}
+
+/* Note - Shoul always be applied as exteion of the main class */
+.contain-shadow {
+	@apply shadow-md mx-4;
+
+}
+
+/* Above the mobile view */
+@screen sm {
+	.contain-shadow {
+		@apply mx-2;
+	}
+}
