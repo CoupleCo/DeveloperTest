@@ -42,7 +42,7 @@ class LoginTest extends TestCase
             'password' => 'invalid'
         ]);
 
-        $response->assertStatus(422);
+        $response->assertStatus(400);
     }
 
     /** @test */

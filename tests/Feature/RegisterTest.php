@@ -45,6 +45,6 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'invalid'
         ]);
 
-        $response->assertStatus(422);
+        $response->assertStatus(400);
     }
 }

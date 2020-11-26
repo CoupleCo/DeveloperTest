@@ -19,11 +19,6 @@ class CreateTeamsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->timestamps();
-
-            $table->foreign('owner_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
         });
     }
 

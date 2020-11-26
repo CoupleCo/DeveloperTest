@@ -43,6 +43,9 @@ class TeamController extends Controller
             'owner_id' => 'unique:teams'
         ]);
 
+        if (auth()->user()->team)
+            return response()->json(['message' => 'User cannot create more than one team'], 422);
+
         auth()->user()->team()->create($attributes);
 
         return response()->json(compact('team'));
@@ -57,6 +60,7 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         $team->members;
+        $team->owner;
         return response()->json(compact('team'));
     }
 

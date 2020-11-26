@@ -5,6 +5,8 @@ import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import CreateTeam from './components/CreateTeam.vue'
 import ViewTeam from './components/ViewTeam.vue'
+import Invite from './components/SendInvite.vue'
+import AcceptInvite from './components/AcceptInvite.vue'
 
 import Router from 'vue-router'
 
@@ -44,6 +46,20 @@ let routes = new Router({
 			meta: {
 				requiresAuth: true
 			}
+		},
+		{
+			name: 'Invite',
+			path: '/team/:id/invite',
+			component: Invite,
+			meta: {
+				requiresAuth: true
+			}
+		}
+		,
+		{
+			name: 'AcceptInvite',
+			path: '/invites/:token',
+			component: AcceptInvite
 		}
 	]
 })

@@ -19,12 +19,19 @@ class InviteController extends Controller
         ]);
 
 		$invite = Invite::whereEmail($request->email)->whereTeamId($request->team_id)->first();
+		$user = User::whereEmail($request->email)->firstOrFail();
+
+		if (\Validator::make(['user_id' => $user->id], [
+            'user_id' => 'unique:team_members|unique:teams,owner_id',
+        ])->fails()) {
+        	return response()->json(['message' => 'A User cannot join multiple teams'], 400);
+        }
 
 		if (!is_null($invite)) {
 			if ($invite->accepted) {
-				return response()->json(['message' => 'User is already a member'], 422);
+				return response()->json(['message' => 'User is already a member'], 400);
 			} else {
-				return response()->json(['message' => 'An invite has been sent to user already'], 422);
+				return response()->json(['message' => 'An invite has been sent to User already'], 400);
 			}
 		}
 
@@ -34,7 +41,7 @@ class InviteController extends Controller
 			'team_id' => $request->team_id,
 		]);
 
-		$mailBody = 'You\'ve been invited to join a team on DevTest: ' . url('invites', [$invite->token]);
+		$mailBody = 'You\'ve been invited to join a team on DevTest: ' . url('/app#/invites', [$invite->token]);
 
 		Mail::raw($mailBody, function ($message) use ($invite) {
 			$message->to($invite->email);
@@ -50,7 +57,7 @@ class InviteController extends Controller
 		$invite = Invite::where('token', $token)->firstOrFail();
 
 		if ($invite->accepted) {
-			return response()->json(['message' => 'User already accepted the invitation'], 422);
+			return response()->json(['message' => 'User already accepted the invitation'], 400);
 		}
 
 		$invite->accepted = true;
@@ -58,9 +65,18 @@ class InviteController extends Controller
 		$team = Team::whereId($invite->team_id)->firstOrFail();
 		$user = User::whereEmail($invite->email)->firstOrFail();
 
+		if (\Validator::make(['user_id' => $user->id], [
+            'user_id' => 'unique:team_members|unique:teams,owner_id',
+        ])->fails()) {
+        	return response()->json(['message' => 'A User cannot join multiple teams'], 400);
+        }
+
 		$team->members()->save($user);
 
 		$invite->save();
+
+		$team->members;
+		$team->owner;
 
 		return response()->json(compact('team'), 200);
 	}

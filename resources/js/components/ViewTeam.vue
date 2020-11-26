@@ -8,11 +8,12 @@
                     <hr class="my-4" />
                     <div class="md:flex items-center mb-4 md:justify-between">
                         <h4 class="md:w-1/2 mb-4 md:mb-0">Team Members</h4>
-                        <button class="btn btn-grey-inverse">Invite</button>
+                        <button @click="showInviteForm" class="btn btn-grey-inverse">Invite</button>
                     </div>
                     <hr class="my-4" />
                     <ul>
-                        <li>Member 1</li>
+                        <li class="my-1">{{team.owner.name}}</li>
+                        <li v-for="user in team.members" class="my-1">{{user.name}}</li>
                     </ul>
                 </div>
                 <div class="contain md:w-3/5 w-full">
@@ -62,6 +63,10 @@
                     alert(err.message)
                     console.log('Err: ', err)
                 })
+            },
+
+            showInviteForm() {
+                this.$router.push(`/team/${this.team.id}/invite`)
             }
         }
     };

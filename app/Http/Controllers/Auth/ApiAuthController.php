@@ -21,7 +21,7 @@ class ApiAuthController extends Controller
 
 	    if ($validator->fails())
 	    {
-	        return response()->json(['errors' => $validator->errors()->all()], 422);
+	        return response()->json(['errors' => $validator->errors()->all()], 400);
 	    }
 
 	    $data = $request->all();
@@ -56,11 +56,11 @@ class ApiAuthController extends Controller
 	            return response()->json($response, 200);
 	        } else {
 	            $response = ["message" => "Password mismatch"];
-	            return response()->json($response, 422);
+	            return response()->json($response, 400);
 	        }
 	    } else {
 	        $response = ["message" =>'User does not exist'];
-	        return response()->json($response, 422);
+	        return response()->json($response, 400);
 	    }
 	}
 

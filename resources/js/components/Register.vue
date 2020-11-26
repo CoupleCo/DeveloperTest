@@ -9,7 +9,7 @@
                         <label class="text-grey label" for="text">Name</label>
                     </div>
                     <div class="group input bg-white border-0">
-                        <input type="text" required="required" v-model="email">
+                        <input type="email" required="required" v-model="email">
                         <label class="text-grey label" for="text">E-mail</label>
                     </div>
                     <div class="input group bg-white border-0">

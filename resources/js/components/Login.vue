@@ -5,7 +5,7 @@
                 <form @submit.prevent="login" class="bg-purple-darker input-contain-shadow p-8 w-1/3 rounded  container mx-auto justify-center items-center">
                     <h2 class="input-header w-5/6 font-extrabold p-4 mb-4 text-grey-light">Log In</h2>
                     <div class="group input bg-white border-0">
-                        <input type="text" required="required" v-model="email">
+                        <input type="email" required="required" v-model="email">
                         <label class="text-grey label" for="text">E-mail</label>
                     </div>
                     <div class="input group bg-white border-0">

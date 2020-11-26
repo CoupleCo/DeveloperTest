@@ -28,14 +28,15 @@
         },
         methods: {
             logout() {
+                let token = localStorage.getItem('token')
+                localStorage.clear()
                 axios.post('/api/logout', {}, {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                        'Authorization': `Bearer ${token}` 
                     }
                 })
                 .then(response => {
-                    localStorage.clear()
                     this.$router.push('/login')
                 })
                 .catch(err => {
