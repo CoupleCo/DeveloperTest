@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <Layout>
         <button @click="gotoCreateTeam" class="btn btn-pink md:w-1/3 xl:w-1/6 ml-auto">Create Team</button>
         <div v-if="teams.length > 0" class="my-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
 
@@ -8,16 +8,18 @@
                 <p class="text-lg">
                     {{team.description}}
                 </p>
-                <span class="flex text-xs justify-end">Created by: {{team.owner.name}}</span>
+                <span class="flex text-xs justify-end bottom-0">Created by: {{team.owner.name}}</span>
             </div>
         </div>
         <div v-else class="flex justify-center">
             <h3>No Teams Created</h3>
         </div>
-    </div>
+    </Layout>
 </template>
 
 <script>
+    import Layout from './Layout'
+
     export default {
         data() {
             return {
@@ -26,6 +28,9 @@
         },
         mounted() {
             this.getTeams()
+        },
+        components: {
+            Layout
         },
         methods: {
             getTeams() {

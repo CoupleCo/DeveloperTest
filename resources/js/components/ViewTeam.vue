@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <Layout>
         <div class="">
             <div class="md:flex">
                 <div class="contain md:w-2/5 w-full">
@@ -28,15 +28,20 @@
                 </div>
             </div>
         </div>
-    </div>
+    </Layout>
 </template>
 
 <script>
+    import Layout from './Layout'
+
     export default {
         data() {
             return {
                 team: {}
             }
+        },
+        components: {
+            Layout
         },
         mounted() {
             this.getTeam()

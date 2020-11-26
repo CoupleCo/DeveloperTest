@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
+    <Layout>
         <div class="justify-center">
             <div class="justify-center">
-                <div class="bg-purple-darker input-contain-shadow p-8 w-1/3 rounded  container mx-auto justify-center items-center">
+                <form @submit.prevent="login" class="bg-purple-darker input-contain-shadow p-8 w-1/3 rounded  container mx-auto justify-center items-center">
                     <h2 class="input-header w-5/6 font-extrabold p-4 mb-4 text-grey-light">Log In</h2>
                     <div class="group input bg-white border-0">
                         <input type="text" required="required" v-model="email">
@@ -12,15 +12,17 @@
                         <input type="password" required="required" v-model="password">
                         <label class="text-grey label" for="password">Password</label>
                     </div>
-                    <button @click="login" class="input input-button mb-8 w-full">Log In</button>
+                    <button type="submit" class="input input-button mb-8 w-full">Log In</button>
                     <router-link class="text-grey-light" to="/register">Register here</router-link>
-                </div>
+                </form>
             </div>
         </div>
-    </div>
+    </Layout>
 </template>
 
 <script>
+    import Layout from './Layout'
+
     export default {
         data() {
             return {
@@ -29,7 +31,8 @@
                 password: ''
             }
         },
-        mounted() {
+        components: {
+            Layout
         },
         methods: {
             login() {

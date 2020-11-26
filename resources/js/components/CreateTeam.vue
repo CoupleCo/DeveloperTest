@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
+    <Layout>
         <div class="justify-center">
             <div class="justify-center">
-                <div class="bg-purple-darker input-contain-shadow p-8 w-3/5 rounded  container mx-auto justify-center items-center">
+                <form @submit.prevent="save" class="bg-purple-darker input-contain-shadow p-8 w-3/5 rounded  container mx-auto justify-center items-center">
                     <h2 class="input-header w-5/6 font-extrabold p-4 mb-4 text-grey-light">Create Team</h2>
                     <div class="group input bg-white border-0">
                         <input type="text" required="required" v-model="name">
@@ -12,20 +12,25 @@
                         <textarea class="w-full h-full" required="required" v-model="description" rows="3"></textarea>
                         <label class="text-grey label" for="password">Description</label>
                     </div>
-                    <button @click="save" class="input input-button mb-8 w-full">Save</button>
-                </div>
+                    <button type="submit" class="input input-button mb-8 w-full">Save</button>
+                </form>
             </div>
         </div>
-    </div>
+    </Layout>
 </template>
 
 <script>
+    import Layout from './Layout'
+
     export default {
         data() {
             return {
                 name: '',
                 description: ''
             }
+        },
+        components: {
+            Layout
         },
         methods: {
             save() {

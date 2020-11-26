@@ -13,13 +13,7 @@
     <body>
         <div id="app">
             <div class="mx-auto">
-                <header class="p-6 bg-purple-darker">
-                    <a href="/app"><h2 class="text-white">Dev Test</h2></a>
-                </header>
-                <main class="contain py-4">
-                    <router-view></router-view>
-                </main>
-                
+                <router-view></router-view>
             </div>
         </div>
 
