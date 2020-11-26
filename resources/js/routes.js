@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import CreateTeam from './components/CreateTeam.vue'
+import ViewTeam from './components/ViewTeam.vue'
 
 import Router from 'vue-router'
 
@@ -32,6 +33,14 @@ let routes = new Router({
 			name: 'createTeam',
 			path: '/create-team',
 			component: CreateTeam,
+			meta: {
+				requiresAuth: true
+			}
+		},
+		{
+			name: 'viewTeam',
+			path: '/team/:id',
+			component: ViewTeam,
 			meta: {
 				requiresAuth: true
 			}
