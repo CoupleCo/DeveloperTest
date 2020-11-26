@@ -1,0 +1,51 @@
+.custom-error {
+@apply fixed pin bg-white z-50;
+   -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ .fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+ }
+
+.padding-top {
+	padding-top: 180px;
+}
+
+.bottom-fixed {
+	@apply shadow-md z-50 flex mx-auto;
+	position:fixed;
+  	bottom: 20px;
+  	left:0;
+  	right: 0;
+  	-webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+
+.bg-gradient-modal-info {
+    background: linear-gradient(to left, #f8fafc 0%,#f8fafc 97%,#C6C7C9 97%,#C6C7C9 100%);
+}
+
+.bg-gradient-modal-success {
+    background: linear-gradient(to left, #f8fafc 0%,#f8fafc 97%,#040123 97%,#040123 100%);
+}
+
+.bg-gradient-modal-danger {
+    background: linear-gradient(to left, #f8fafc 0%,#f8fafc 97%,#FF1F49 97%,#FF1F49 100%);
+}

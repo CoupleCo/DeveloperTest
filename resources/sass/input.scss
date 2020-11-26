@@ -37,33 +37,29 @@
 	@apply absolute;
   left: 20px;
   top: 27px;
-  transition: 25s ease-in;
+  transition: .25s ease-in;
 }
 
-.input {
+input, textarea {
+  @apply w-full;
   margin-top: 5px;
   display: block;
   border: none;
   border-radius: 0;
-  transition: 3s ease-in;
+  transition: .3s ease-in;
 }
 
-.input:valid ~ label {
+input:valid ~ label, textarea:valid ~ label {
   top: 10px;
   color: #040123;
 }
 
-.input:focus {
+input:focus, textarea:focus {
   outline: none;
   color: #040123;
 }
 
-.input:focus ~ label {
+input:focus ~ label, textarea:focus ~ label {
   top: 10px;
-   color: #040123;
-} 
-
-
-
-
-
+  color: #040123;
+}

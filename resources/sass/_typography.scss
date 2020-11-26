@@ -1,6 +1,9 @@
 body {
   @apply bg-grey-light font-serif;
   @apply tracking-wide;
+ 
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+font-family: 'Montserrat', sans-serif;
 }
 h1  {
   @apply text-purple-darker text-lg font-extrabold tracking-normal;

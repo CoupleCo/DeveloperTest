@@ -1,15 +1,15 @@
-import Home from './components/Home.vue';
-import Login from './components/Login.vue';
-import Register from './components/Register.vue';
+import auth from './middlewares/auth'
 
-export default {
+import Dashboard from './components/Dashboard.vue'
+import Login from './components/Login.vue'
+import Register from './components/Register.vue'
+import CreateTeam from './components/CreateTeam.vue'
+
+import Router from 'vue-router'
+
+let routes = new Router({
 	mode: 'hash',
 	routes: [
-		{
-			name: 'home',
-			path: '/',
-			component: Home
-		},
 		{
 			name: 'login',
 			path: '/login',
@@ -19,6 +19,37 @@ export default {
 			name: 'register',
 			path: '/register',
 			component: Register
+		},
+		{
+			name: 'dashboard',
+			path: '/',
+			component: Dashboard,
+			meta: {
+				requiresAuth: true
+			}
+		},
+		{
+			name: 'createTeam',
+			path: '/create-team',
+			component: CreateTeam,
+			meta: {
+				requiresAuth: true
+			}
 		}
 	]
-}
+})
+
+routes.beforeEach((to, from, next) => {
+	if (to.matched.some(record => record.meta.requiresAuth)) {
+		if (!auth())
+			next({
+				name: 'login'
+			})
+
+		next()
+	} else {
+		next()
+	}
+})
+
+export default routes

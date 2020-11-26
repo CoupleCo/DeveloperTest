@@ -12,17 +12,12 @@
     </head>
     <body>
         <div id="app">
-            <div class="container mx-auto">
-                <header class="py-6">
-                    Dev Test
+            <div class="mx-auto">
+                <header class="p-6 bg-purple-darker">
+                    <a href="/app"><h2 class="text-white">Dev Test</h2></a>
                 </header>
-                <main class="flex">
-                    <aside class="w-1/5">
-                        SideBar
-                    </aside>
-                    <div class="primary flex-1">
-                        <router-view></router-view>
-                    </div>
+                <main class="contain bg-grey-light py-4">
+                    <router-view></router-view>
                 </main>
                 
             </div>

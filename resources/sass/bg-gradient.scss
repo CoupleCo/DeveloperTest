@@ -1,0 +1,29 @@
+.bg-gradient {
+	background: linear-gradient(to right, #040123 , #2B256F);
+}
+
+.bg-gradient-reverse {
+	background: linear-gradient(to right, #2B256F  ,#040123);
+}
+
+.bg-gradient-grey {
+	background: linear-gradient(to right, #f8fafc ,#CCCCCC);
+}
+
+.bg-gradient-grey-reverse {
+	background: linear-gradient(to right, #CCCCCC ,#f8fafc);
+}
+
+.bg-gradient-CTA {
+    background: linear-gradient(to bottom, #f8fafc 0%,#f8fafc 30%,#040123 30%,#040123 100%);
+}
+
+.bg-gradient-CTA-reverse {
+    background: linear-gradient(to bottom,#040123  0%,#040123 30%,#f8fafc 30%,#f8fafc 100%);
+}
+
+.bg-gradient-CTA-position {
+	@media (min-width: 992px){
+	margin-top: -70px;
+	}
+}
