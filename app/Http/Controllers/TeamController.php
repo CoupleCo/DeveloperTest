@@ -56,6 +56,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
+        $team->members;
         return response()->json(compact('team'));
     }
 

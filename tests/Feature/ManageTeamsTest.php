@@ -12,7 +12,7 @@ class ManageTeamsTest extends TestCase
     use WithFaker, RefreshDatabase;
 
     /** @test */
-    public function only_an_authenticated_user_can_create_a_team()
+    public function an_authenticated_user_can_create_a_team()
     {
         $this->withoutExceptionHandling();
 
