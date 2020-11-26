@@ -50,7 +50,7 @@ class LoginTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $user = Passport::actingAs(factory(User::class)->create());
+        Passport::actingAs(factory(User::class)->create());
 
         $response = $this->postJson('/api/logout');
 

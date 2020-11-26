@@ -16,7 +16,7 @@ class TeamTest extends TestCase
     {
     	$team = factory('App\Team')->create();
 
-    	$this->assertEquals('/teams/' . $team->id, $team->path());
+    	$this->assertEquals('/api/teams/' . $team->id, $team->path());
     }
 
     /** @test */

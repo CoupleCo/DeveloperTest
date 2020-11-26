@@ -23,12 +23,6 @@ Route::group(['prefix' => 'app'], function () {
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function() {
-	Route::get('teams', 'TeamController@index')->middleware('auth');
-	Route::get('teams/{team}', 'TeamController@show')->middleware('auth')->name('team.view');
-	Route::post('/teams', 'TeamController@store')->middleware('auth');
-
-	Route::get('/home', 'HomeController@index')->name('home');
-});
+Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 

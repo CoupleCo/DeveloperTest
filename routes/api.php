@@ -21,4 +21,7 @@ Route::group(['middleware' => 'auth:api'], function() {
 	    return $request->user();
 	});
 	Route::post('/logout', 'Auth\ApiAuthController@logout');
+	Route::get('teams', 'TeamController@index');
+	Route::get('teams/{team}', 'TeamController@show')->name('team.view');
+	Route::post('/teams', 'TeamController@store');
 });

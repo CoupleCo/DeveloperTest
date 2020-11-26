@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
 
 class ManageTeamsTest extends TestCase
 {
@@ -15,11 +16,11 @@ class ManageTeamsTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->actingAs(factory('App\User')->create());
+        Passport::actingAs(factory('App\User')->create());
 
         $attributes = factory('App\Team')->raw(['owner_id' => auth()->id()]);
 
-        $this->post('teams', $attributes);
+        $this->postJson('/api/teams', $attributes);
 
         $this->assertDatabaseHas('teams', $attributes);
 
@@ -30,38 +31,38 @@ class ManageTeamsTest extends TestCase
     public function guests_cannot_create_team()
     {
         $attributes = factory('App\Team')->raw(['owner_id' => '']);
-        $this->post('teams', $attributes)->assertRedirect('login');
+        $this->postJson('/api/teams', $attributes)->assertStatus(401);
     }
 
     /** @test */
     public function guests_cannot_view_teams()
     {
-        $this->get('teams')->assertRedirect('login');
+        $this->getJson('/api/teams')->assertStatus(401);
     }
 
     /** @test */
     public function guests_cannot_view_a_single_team()
     {
         $team = factory('App\Team')->create();
-        $this->get($team->path())->assertRedirect('login');
+        $this->getJson($team->path())->assertStatus(401);
     }
 
     /** @test */
     public function a_team_requires_a_name()
     {
-        $this->actingAs(factory('App\User')->create());
+        Passport::actingAs(factory('App\User')->create());
 
         $attributes = factory('App\Team')->raw(['name' => '']);
-        $this->post('teams', $attributes)->assertSessionHasErrors('name');
+        $this->postJson('/api/teams', $attributes)->assertStatus(422);
     }
 
     /** @test */
     public function a_team_requires_a_description()
     {
-        $this->actingAs(factory('App\User')->create());
+        Passport::actingAs(factory('App\User')->create());
 
         $attributes = factory('App\Team')->raw(['description' => '']);
-        $this->post('teams', $attributes)->assertSessionHasErrors('description');
+        $this->postJson('/api/teams', $attributes)->assertStatus(422);
     }
 
     /** @test */
@@ -69,11 +70,11 @@ class ManageTeamsTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->actingAs(factory('App\User')->create());
+        Passport::actingAs(factory('App\User')->create());
 
         $team = factory('App\Team')->create();
 
-        $this->get($team->path());
+        $this->getJson($team->path());
 
         $this->assertJson($team);
     }
@@ -83,15 +84,15 @@ class ManageTeamsTest extends TestCase
     {
         // $this->withoutExceptionHandling();
 
-        $this->actingAs(factory('App\User')->create());
+        Passport::actingAs(factory('App\User')->create());
 
         $team_attributes_1 = factory('App\Team')->raw(['owner_id' => auth()->id()]);
         $team_attributes_2 = factory('App\Team')->raw(['owner_id' => auth()->id()]);
 
-        $this->post('teams', $team_attributes_1);
+        $this->postJson('/api/teams', $team_attributes_1)->assertStatus(200);
 
         $this->assertDatabaseHas('teams', $team_attributes_1);
 
-        $this->post('teams', $team_attributes_2)->assertSessionHasErrors('owner_id');
+        $this->postJson('/api/teams', $team_attributes_2)->assertStatus(422);
     }
 }

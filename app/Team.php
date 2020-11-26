@@ -10,7 +10,7 @@ class Team extends Model
 
     public function path()
     {
-    	return "/teams/{$this->id}";
+    	return "/api/teams/{$this->id}";
     }
 
     public function owner()
