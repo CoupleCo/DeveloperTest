@@ -30,8 +30,14 @@
         methods: {
             save() {
                 let payload = {name: this.name, description: this.description}
-                axios.post('/api/teams', payload)
+                axios.post('/api/teams', payload, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                    }
+                })
                 .then(response => {
+                    console.log('Team: ', response)
                     setTimeout(() => {
                         this.$router.push({ name: 'dashboard' })
                     }, 200)

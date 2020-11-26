@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = auth()->user()->team;
+        $teams = Team::with('owner')->orderByDesc('id')->get();
 
         return response()->json(compact('teams'));
     }

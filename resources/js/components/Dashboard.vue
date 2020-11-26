@@ -1,12 +1,14 @@
 <template>
     <div class="">
         <button @click="gotoCreateTeam" class="btn btn-pink md:w-1/3 xl:w-1/6 ml-auto">Create Team</button>
-        <div v-if="teams.length > 0">
-            <div class="contain contain-shadow" v-for="team in teams">
-                <h3>{{team.name}}</h3>
-                <p>
+        <div v-if="teams.length > 0" class="my-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
+
+            <div class="contain contain-shadow bg-white rounded-lg" v-for="team in teams">
+                <router-link :to="/team/ + team.id"><h4>{{team.name}}</h4></router-link>
+                <p class="text-lg">
                     {{team.description}}
                 </p>
+                <span class="flex text-xs justify-end">Created by: {{team.owner.name}}</span>
             </div>
         </div>
         <div v-else class="flex justify-center">
@@ -27,10 +29,15 @@
         },
         methods: {
             getTeams() {
-                axios.get('/api/teams')
+                axios.get('/api/teams', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                    }
+                })
                 .then(response => {
                     this.teams = response.data.teams
-                    console.log("teams: ", this.teams)
+                    console.log("teams: ", response)
                 })
                 .catch(err => {
                     alert(err.message)

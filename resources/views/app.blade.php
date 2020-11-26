@@ -16,7 +16,7 @@
                 <header class="p-6 bg-purple-darker">
                     <a href="/app"><h2 class="text-white">Dev Test</h2></a>
                 </header>
-                <main class="contain bg-grey-light py-4">
+                <main class="contain py-4">
                     <router-view></router-view>
                 </main>
                 

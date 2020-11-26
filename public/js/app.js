@@ -1755,7 +1755,13 @@ __webpack_require__.r(__webpack_exports__);
         name: this.name,
         description: this.description
       };
-      axios.post('/api/teams', payload).then(function (response) {
+      axios.post('/api/teams', payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
+        console.log('Team: ', response);
         setTimeout(function () {
           _this.$router.push({
             name: 'dashboard'
@@ -1797,6 +1803,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1810,9 +1818,14 @@ __webpack_require__.r(__webpack_exports__);
     getTeams: function getTeams() {
       var _this = this;
 
-      axios.get('/api/teams').then(function (response) {
+      axios.get('/api/teams', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
         _this.teams = response.data.teams;
-        console.log("teams: ", _this.teams);
+        console.log("teams: ", response);
       })["catch"](function (err) {
         alert(err.message);
         console.log('Err: ', err);
@@ -4100,18 +4113,32 @@ var render = function() {
     _vm.teams.length > 0
       ? _c(
           "div",
+          {
+            staticClass: "my-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4"
+          },
           _vm._l(_vm.teams, function(team) {
-            return _c("div", { staticClass: "contain contain-shadow" }, [
-              _c("h3", [_vm._v(_vm._s(team.name))]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(team.description) +
-                    "\n            "
-                )
-              ])
-            ])
+            return _c(
+              "div",
+              { staticClass: "contain contain-shadow bg-white rounded-lg" },
+              [
+                _c("router-link", { attrs: { to: /team/ + team.id } }, [
+                  _c("h4", [_vm._v(_vm._s(team.name))])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "text-lg" }, [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(team.description) +
+                      "\n            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "flex text-xs justify-end" }, [
+                  _vm._v("Created by: " + _vm._s(team.owner.name))
+                ])
+              ],
+              1
+            )
           }),
           0
         )
