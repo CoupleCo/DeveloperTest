@@ -42,7 +42,6 @@
                 })
                 .then(response => {
                     this.teams = response.data.teams
-                    console.log("teams: ", response)
                 })
                 .catch(err => {
                     alert(err.message)

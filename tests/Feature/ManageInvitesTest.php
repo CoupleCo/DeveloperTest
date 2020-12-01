@@ -32,8 +32,6 @@ class ManageInvitesTest extends TestCase
     /** @test */
     public function cannot_send_invite_to_a_member_or_invited_user()
     {
-        $this->withoutExceptionHandling();
-
         Passport::actingAs(factory('App\User')->create());
         $user = factory('App\User')->create();
         $team = factory('App\Team')->create();
@@ -47,8 +45,6 @@ class ManageInvitesTest extends TestCase
     /** @test */
     public function cannot_send_invite_to_a_team_owner()
     {
-        $this->withoutExceptionHandling();
-
         Passport::actingAs(factory('App\User')->create());
         $user = factory('App\User')->create();
         $team = factory('App\Team')->create(['owner_id' => $user->id]);
@@ -62,8 +58,6 @@ class ManageInvitesTest extends TestCase
     /** @test */
     public function cannot_send_invite_to_a_member_of_another_team()
     {
-        $this->withoutExceptionHandling();
-
         Passport::actingAs(factory('App\User')->create());
         $user = factory('App\User')->create();
         $team = factory('App\Team')->create();
@@ -88,8 +82,6 @@ class ManageInvitesTest extends TestCase
     /** @test */
     public function user_can_accept_invite()
     {
-        $this->withoutExceptionHandling();
-
         $invite = factory('App\Invite')->create();
         $this->getJson('/api/invites/' . $invite->token)->assertStatus(200);
     }

@@ -17,47 +17,23 @@
 
 <script>
     import Layout from './Layout'
+    import { client } from '../clientService'
 
     export default {
         data() {
             return {
                 email: '',
-                team: {}
+                team: JSON.parse(localStorage.getItem('team'))
             }
         },
         components: {
             Layout
         },
-        mounted() {
-            this.getTeam()
-        },
         methods: {
-            getTeam() {
-                axios.get(`/api/teams/${this.$route.params.id}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}` 
-                    }
-                })
-                .then(response => {
-                    console.log(response)
-                    this.team = response.data.team
-                })
-                .catch(err => {
-                    alert(err.message)
-                    console.log('Err: ', err)
-                })
-            },
             sendInvite() {
                 let payload = {email: this.email, team_id: this.team.id}
-                axios.post('/api/invites', payload, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}` 
-                    }
-                })
+                client.post('/api/invites', payload)
                 .then(response => {
-                    console.log('Invite: ', response)
                     alert("Invitation email sent!")
                     setTimeout(() => {
                         this.$router.push(`/team/${this.team.id}`)

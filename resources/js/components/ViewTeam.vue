@@ -38,7 +38,7 @@
     export default {
         data() {
             return {
-                team: {}
+                team: null
             }
         },
         components: {
@@ -56,8 +56,8 @@
                     }
                 })
                 .then(response => {
-                    console.log(response)
                     this.team = response.data.team
+                    localStorage.setItem('team', JSON.stringify(this.team))
                 })
                 .catch(err => {
                     alert(err.message)
