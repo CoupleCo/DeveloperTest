@@ -2,7 +2,7 @@
     <Layout>
         <div class="justify-center">
             <div class="justify-center">
-                <form @submit.prevent="sendInvite" class="bg-purple-darker input-contain-shadow p-8 w-3/5 rounded  container mx-auto justify-center items-center">
+                <form @submit.prevent="sendInvite" class="container bg-purple-darker input-contain-shadow p-8 w-3/5 rounded mx-auto justify-center items-center">
                     <h3 class="input-header font-extrabold p-4 mb-4 text-grey-light">Invite a Member to join {{team.name}}</h3>
                     <div class="group input bg-white border-0">
                         <input type="email" required="required" v-model="email">
