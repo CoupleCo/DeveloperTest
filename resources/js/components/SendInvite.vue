@@ -17,7 +17,7 @@
 
 <script>
     import Layout from './Layout'
-    import { client } from '../clientService'
+    import client from '../httpService'
 
     export default {
         data() {
@@ -32,7 +32,7 @@
         methods: {
             sendInvite() {
                 let payload = {email: this.email, team_id: this.team.id}
-                client.post('/api/invites', payload)
+                client.service.post('/api/invites', payload)
                 .then(response => {
                     alert("Invitation email sent!")
                     setTimeout(() => {

@@ -46,7 +46,7 @@ class TeamController extends Controller
         if (auth()->user()->team)
             return response()->json(['message' => 'User cannot create more than one team'], 422);
 
-        auth()->user()->team()->create($attributes);
+        $team = auth()->user()->team()->create($attributes);
 
         return response()->json(compact('team'));
     }
