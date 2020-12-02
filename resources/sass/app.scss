@@ -1,1 +1,12 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
+@import "./input.scss";
+@import "./btn.scss";
+@import "./container.scss";
+@import "./_typography.scss";
+@import "./bg-gradient.scss";
+@import "./dropdown-navigation.scss";
+@import "./icon.scss";
+@import "./responsive-fix.scss";

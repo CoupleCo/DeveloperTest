@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'app'], function () {
+    Route::get('/{any?}', function () {
+	    return view('app');
+	});
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
+
+

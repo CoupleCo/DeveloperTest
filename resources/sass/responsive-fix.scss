@@ -1,0 +1,123 @@
+.responsive-hidden {
+	@media (max-width: 1200px){
+	display:none;
+		}
+}
+
+.responsive-show {
+	@media (min-width: 1200px){
+	display:none;
+		}
+}
+
+.responsive-hidden-nav {
+	@media (max-width: 992px){
+	display:none;
+		}
+}
+
+.responsive-show-nav {
+	@media (min-width: 992px){
+	display:none;
+		}
+}
+
+
+p {
+@media(min-width: 1200px) {
+	font-size: 1.3rem;
+}
+}
+
+h1 {
+@media(min-width: 992px) {
+	font-size: 3rem;
+}
+
+@media(max-width: 992px) {
+	font-size: 2rem;
+}
+}
+
+
+h2 {
+@media(min-width: 992px) {
+	font-size: 3rem;
+}
+
+@media(max-width: 992px) {
+	font-size: 2rem;
+}
+}
+
+h3 {
+@media(min-width: 1200px) {
+	font-size: 1.5rem;
+}
+}
+
+.card-height-ppt { 
+	@media(min-width: 992px) {
+	min-height: 460px;
+}
+}
+
+.card-height-research { 
+	@media(min-width: 992px) {
+	min-height: 490px;
+}
+}
+
+.card-height-research p { 
+	@media(min-width: 992px) {
+	min-height: 220px;
+}
+}
+
+
+.card-height-landing {
+		@media(min-width: 992px) {
+	min-height: 410px;
+}
+
+}
+
+.card-height-pricing {
+		@media(min-width: 992px) {
+	min-height: 680px;
+}
+
+}
+
+
+
+.height-fixed {
+@media (min-width: 1200px){
+	min-height: 70px;
+	}
+}
+
+.button-fixed {
+@media (min-width: 992px){
+	min-height: 190px;
+	}
+}
+
+
+.card-height-adjusted-mobile {
+	@media (max-width: 400px){
+	min-height: 900px;
+	}
+}
+
+.card-height-blog {
+		@media(min-width: 992px) {
+	min-height: 160px;
+}
+}
+
+.card-height-blog-content {
+		@media(min-width: 992px) {
+	min-height: 110px;
+}
+}

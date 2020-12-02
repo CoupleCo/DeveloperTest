@@ -4,9 +4,6 @@ Startup Journal case for potential candidates
 ## Introduction
 This repository is our ongoing testing ground for potential new developers that want to demonstrate their skills in a "real" Laravel application
 
-## Status
-Currently there almost no code written yet - the first pull-requst have yet to be approved
-
 ## Near term backlog
 We suggest the first candiate start by executing the following parts of the backlog:
 - Create a basic login page using the design.nomorecph.com design settings
@@ -17,26 +14,6 @@ We suggest the first candiate start by executing the following parts of the back
 Remember: Do it TDD - write the tests first ;)
 
 # Background
-
-## Purpose
-We want to assess the candidate with respect to:
--	Ability to learn something new
--	Demonstrate ability to write well structured, easy to read code
--	Test work speed and ability to execute across the stack
-
-We want candidates to use a clone of our internal stack:
--	Laravel 5.7+
--	Vue.js 
--	Pusher (free version - not required in)
-
-Specific areas we want to test:
--	Basic Laravel MVC understanding
--	Basic Vue / axios / json communication with the back-end
--	Writing tests (TDD)
--	Setting up and migrating the database
--	Basic storage interactions
--	Use of Laravel's authentication
-- Use of middleware 
 
 ## What to build: “Startup Journal” 😊
 -	Basic idea: A web platform in which employees of innovative startup companies can login and share pictures from the startup journey. 
@@ -67,4 +44,42 @@ Specific areas we want to test:
 - Users cannot post the same comment to the same picture more than once
 - For the front-end the design style of design.nomorecph.com must be used
 - Tailwind must be used for all front-end
+
+# Task
+
+## What I did
+
+- Here I have worked on the "Near term backlog" taking into consideration the business constraints. I have adopted the TDD approach in the development of the backend. 
+- I built the front-end with Vue.js as a SPA communicating with the backend through RESTful API endpoints. API Documentation available [here](https://documenter.getpostman.com/view/2211912/TVmLCJiY)
+- The front-end also makes use of the design style guide with Tailwind CSS.
+View a brief recording of the end product [here](https://www.loom.com/share/2322773e626248cda4414a75f8222a3a)
+
+## Features
+
+- Guests can register, login and logout.
+	- It is assumed that a user can register without creating/joining a team.
+- Users can create a team.
+	- Team owners/members cannot create a new team.
+- Users can see all teams.
+- Users can view a team.
+- Users can see members on a team.
+- Users can invite other users to join a team.
+	- Invitation can only be sent to registered users.
+	- Invitation cannot be sent to team owners/members.
+- Users can accept an invitation to join a team.
+
+- Some design decisions:
+	- I used Laravel's Passport to implement a "Bearer Token" authentication. When a user logs in, they receive a token which is required in the header for requests to the endpoints.
+	- I adopted most of Uncle Bob's clean code principles in the refactoring of the InviteController and InviteRepository classes.
+	- I have adopted the use of a Repository in order to have lean controllers. This can be seen in the implementation of the "Invite" feature.
+
+## If I had more time 
+
+- I would implement more features in the backlog to have a richer MVP.
+- I would write more tests for edge cases and increase the test coverage.
+- I would adopt a more robust Repository pattern in a way that implementation would be based on interfaces.
+- I would implement authorization to take care of some business constraints and user permissions.
+- I would implement better feedback mechanism and error handling for the SPA.
+
+
 
