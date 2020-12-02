@@ -49,9 +49,12 @@ Remember: Do it TDD - write the tests first ;)
 
 ## What I did
 
-Here I have worked on the "Near term backlog" taking into consideration the business constraints. I have adopted the TDD approach in the development of the backend. 
-I built the front-end with Vue.js as a SPA communicating with the backend through RESTful API endpoints. API Documentation available [here](https://documenter.getpostman.com/view/2211912/TVmLCJiY)
-The front-end also makes use of the design style guide with Tailwind CSS.
+- Here I have worked on the "Near term backlog" taking into consideration the business constraints. I have adopted the TDD approach in the development of the backend. 
+- I built the front-end with Vue.js as a SPA communicating with the backend through RESTful API endpoints. API Documentation available [here](https://documenter.getpostman.com/view/2211912/TVmLCJiY)
+- The front-end also makes use of the design style guide with Tailwind CSS.
+View a brief recording of the end product [here](https://www.loom.com/share/2322773e626248cda4414a75f8222a3a)
+
+## Features
 
 - Guests can register, login and logout.
 	- It is assumed that a user can register without creating/joining a team.
@@ -72,9 +75,11 @@ The front-end also makes use of the design style guide with Tailwind CSS.
 
 ## If I had more time 
 
-- I would write more unit tests to increase the test coverage.
 - I would implement more features in the backlog to have a richer MVP.
+- I would write more tests for edge cases and increase the test coverage.
 - I would adopt a more robust Repository pattern in a way that implementation would be based on interfaces.
+- I would implement authorization to take care of some business constraints and user permissions.
+- I would implement better feedback mechanism and error handling for the SPA.
 
 
 
